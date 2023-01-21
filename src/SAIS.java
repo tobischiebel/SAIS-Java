@@ -41,8 +41,8 @@ public class SAIS {
         long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
         // Calculate used time and memory of SA construction
-        double timeUsedSA = (endTimeSA - startTimeSA) / 1000000.0;
-        double memUsed = (afterUsedMem - beforeUsedMem) / 1000000.0;
+        long timeUsedSA = (endTimeSA - startTimeSA) / 1000000;
+        long memUsed = (afterUsedMem - beforeUsedMem) / 1000000;
 
 
         ///////////////////
@@ -52,7 +52,7 @@ public class SAIS {
         int[] naiveLCP = naiveLCPArray(input, sa);
         long endTimeLCPNaive = System.nanoTime();
 
-        double timeUsedLCPNaive = (endTimeLCPNaive - startTimeLCPNaive) / 1000000.0;
+        long timeUsedLCPNaive = (endTimeLCPNaive - startTimeLCPNaive) / 1000000;
 
 
         ///////////////////
@@ -62,7 +62,7 @@ public class SAIS {
         int[] kasaiLCP = kasaiLCPArray(input, sa);
         long endTimeLCPKasai = System.nanoTime();
 
-        double timeUsedLCPKasai = (endTimeLCPKasai - startTimeLCPKasai) / 1000000.0;
+        long timeUsedLCPKasai = (endTimeLCPKasai - startTimeLCPKasai) / 1000000;
 
 
         ///////////////////
@@ -72,11 +72,11 @@ public class SAIS {
         int[] phiLCP = phiLCPArray(input, sa);
         long endTimeLCPPhi = System.nanoTime();
 
-        double timeUsedLCPPhi = (endTimeLCPPhi - startTimeLCPPhi) / 1000000.0;
+        long timeUsedLCPPhi = (endTimeLCPPhi - startTimeLCPPhi) / 1000000;
 
 
         // Final program output print
-        System.out.printf("RESULT name=TobiasSchiebel sa_construction_time=%.3f sa_construction_memory=%.3f lcp naive construction time=%.3f lcp kasai construction time=%.3f lcp phi construction time=%.3f", timeUsedSA, memUsed, timeUsedLCPNaive, timeUsedLCPKasai, timeUsedLCPPhi);
+        System.out.printf("RESULT name=TobiasSchiebel sa_construction_time=%d sa_construction_memory=%d lcp_naive_construction_time=%d lcp_kasai_construction_time=%d lcp_phi_construction_time=%d", timeUsedSA, memUsed, timeUsedLCPNaive, timeUsedLCPKasai, timeUsedLCPPhi);
     }
 
 
