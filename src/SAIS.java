@@ -14,9 +14,6 @@ public class SAIS {
 
         byte[] inputBytes = Files.readAllBytes(Paths.get(args[0]));
 
-        // TODO REMOVE Testing purposes only, ababcabcabba, immissiissippi
-        //byte[] inputBytes = "immissiissippi".getBytes();
-
         // Preprocessing; convert input to array of unsigned integers because Java bytes are signed, add one to all byte
         // values to ensure sentinel with byte value zero is smaller than all other characters appearing
         int[] input = new int[inputBytes.length + 1];
@@ -24,7 +21,6 @@ public class SAIS {
             input[i] = (((int) inputBytes[i]) & 0xff) + 1;
         }
 
-        // TODO Remove adding sentinel manually (above: array size + 1, loop iteration - 1, adding +1 to all bytes)
         // Add sentinel with byte value zero at the very end
         input[inputBytes.length] = 0;
 
@@ -39,9 +35,6 @@ public class SAIS {
 
         // Construct suffix array with cyclic shift algorithm in O(n log n) time
         int[] sa = sais(input, alphabetSize);
-
-        // TODO REMOVE Debug print
-        //System.out.println(Arrays.toString(sa));
 
         // Get used memory and start time AFTER SA construction
         long endTimeSA = System.nanoTime();
@@ -83,7 +76,7 @@ public class SAIS {
 
 
         // Final program output print
-        System.out.printf("RESULT name=Tobias Schiebel sa_construction_time=%.3f sa_construction_memory=%.3f lcp naive construction time=%.3f lcp kasai construction time=%.3f lcp phi construction time=%.3f", timeUsedSA, memUsed, timeUsedLCPNaive, timeUsedLCPKasai, timeUsedLCPPhi);
+        System.out.printf("RESULT name=TobiasSchiebel sa_construction_time=%.3f sa_construction_memory=%.3f lcp naive construction time=%.3f lcp kasai construction time=%.3f lcp phi construction time=%.3f", timeUsedSA, memUsed, timeUsedLCPNaive, timeUsedLCPKasai, timeUsedLCPPhi);
     }
 
 
